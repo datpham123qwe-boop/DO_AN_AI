@@ -1,3 +1,12 @@
-data/raw
+# Thêm dấu / ở cuối để chỉ định rõ thư mục
+.venv/
+venv/
+ENV/
+env/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
 *.zip
 *.tar.gz
+data/
