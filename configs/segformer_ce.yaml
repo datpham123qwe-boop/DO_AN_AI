@@ -1,0 +1,22 @@
+seed: 42
+
+data:
+  root: data/raw/PhenoBench-v110/PhenoBench
+  crop_size: 512
+  mask_mode: merge
+
+training:
+  batch_size: 4
+  num_workers: 2
+  epochs: 3
+
+  learning_rate: 0.00006
+  weight_decay: 0.01
+
+  amp: true
+
+  output_dir: outputs/segformer/ce
+
+loss:
+  name: ce
+  class_weight: null
