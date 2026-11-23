@@ -1,19 +1,7 @@
-"""Tính thống kê lớp (class statistics) cho PhenoBench và lưu ra JSON.
+"""Đếm pixel theo lớp và xuất class weights cho PhenoBench.
 
-Đặt file này tại: scripts/compute_class_stats.py
-Chạy từ thư mục gốc của repo:
-
-    python scripts/compute_class_stats.py
-    python scripts/compute_class_stats.py --data_root data/raw/PhenoBench-v110/PhenoBench --split train
-
-Kết quả: data/processed/class_stats.json
-
-File JSON chứa:
-  - số pixel và tỉ lệ của 5 ID gốc (trước khi mapping)
-  - số pixel và tỉ lệ của 3 lớp project (sau khi mapping)
-  - class weights theo 3 cách tính (B dùng cho Weighted CE)
-
-Class weights chỉ nên tính từ tập TRAIN, không dùng val/test.
+Chạy từ thư mục gốc của repo. Class weights cho WCE được tính từ tập train.
+JSON chứa số pixel trước/sau mapping, tần suất và trọng số đã chuẩn hóa.
 """
 import argparse
 import json
@@ -92,7 +80,7 @@ def main():
                         help="merge: partial -> crop/weed; ignore: partial -> 255")
     parser.add_argument("--out", default="data/processed/class_stats.json")
     parser.add_argument("--sem_folder", default="semantics",
-                        help="tên thư mục chứa mask (sửa theo cây thư mục thật)")
+                        help="Tên thư mục semantic mask trong mỗi split")
     args = parser.parse_args()
 
     if args.split != "train":
@@ -149,7 +137,6 @@ def main():
     with open(out_path, "w", encoding="utf-8") as f:
         json.dump(stats, f, indent=2, ensure_ascii=False)
 
-    # In tóm tắt ra màn hình
     print(f"\n{num_images} ảnh, {total_pixels:,} pixel")
     print("\nID gốc:")
     for name, info in stats["raw_ids"].items():
@@ -168,4 +155,6 @@ def main():
 
 
 if __name__ == "__main__":
+    if hasattr(sys.stdout, "reconfigure"):
+        sys.stdout.reconfigure(encoding="utf-8")
     main()

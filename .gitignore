@@ -1,4 +1,4 @@
-# Thêm dấu / ở cuối để chỉ định rõ thư mục
+# Python environments and caches
 .venv/
 venv/
 ENV/
@@ -7,7 +7,30 @@ __pycache__/
 *.pyc
 *.pyo
 *.pyd
+.ipynb_checkpoints/
+# Datasets, checkpoints and generated artifacts
 *.zip
 *.tar.gz
+*.pt
+*.pt.tmp
+*.pth
 data/
 outputs/
+output/
+.tools/
+.pytest_cache/
+.cache/
+cloud_upload/
+checkpoints/*
+!checkpoints/.gitkeep
+results/*
+!results/figures/
+!results/metrics/
+!results/predictions/
+!results/spray_masks/
+results/figures/*
+results/metrics/*
+results/predictions/*
+results/spray_masks/*
+!results/**/.gitkeep
+configs/cloud_*.yaml

@@ -1,0 +1,24 @@
+experiment_id: E2
+model_name: segformer
+seed: 42
+data:
+  root: data/raw/PhenoBench-v110/PhenoBench
+  crop_size: 512
+  mask_mode: merge
+training:
+  batch_size: 4
+  accumulation_steps: 1
+  freeze_batchnorm: false
+  val_batch_size: 4
+  validation_tile_size: null
+  loss_aggregation: batch_mean
+  num_workers: 2
+  epochs: 20
+  learning_rate: 6.0e-05
+  weight_decay: 0.01
+  amp: true
+  output_dir: outputs/plan20/segformer/ce
+loss:
+  name: ce
+  class_weight: null
+  ignore_index: 255

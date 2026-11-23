@@ -1,3 +1,12 @@
-albumentations>=2.0,<3.0
-transformers
-segmentation_models_pytorch
+# Install torch/torchvision separately using the appropriate CUDA wheel index.
+torch==2.7.1
+torchvision==0.22.1
+numpy==2.2.6
+Pillow==11.2.1
+PyYAML==6.0.2
+albumentations==2.0.8
+transformers==4.51.3
+segmentation_models_pytorch==0.5.0
+matplotlib==3.10.3
+tqdm==4.67.1
+pytest==8.3.5

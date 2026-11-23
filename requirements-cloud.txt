@@ -1,0 +1,8 @@
+# Keep the platform's paired CUDA torch/torchvision installation.
+# Record the actual installed environment in each experiment's environment.json.
+albumentations==2.0.8
+transformers==4.51.3
+segmentation_models_pytorch==0.5.0
+PyYAML==6.0.2
+tqdm==4.67.1
+matplotlib>=3.8,<4
