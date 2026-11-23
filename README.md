@@ -165,6 +165,23 @@ Weed Coverage khi chưa có nhãn tham chiếu. Xuất prediction và spray mask
 python scripts/predict.py --checkpoint outputs/plan20/deeplab/ce/best.pt --input-dir ../PhenoBench-v110/PhenoBench/test/images --output-dir results/test_predictions --device cuda
 ```
 
+Với model cuối E2, dùng [predict_test.ipynb](notebooks/predict_test.ipynb) trên Kaggle.
+Thêm code mới nhất, thư mục kết quả train SegFormer CE và `PhenoBench_test.zip` vào Input.
+Notebook dự đoán đủ 693 ảnh, kiểm tra mask và tạo `submission_E2_segformer_ce.zip`
+chứa thư mục `semantics/` với PNG 16-bit, ID 0/1/2. ZIP này dùng để nộp server;
+ZIP `test_predictions_E2.zip` giữ prediction, spray mask và hình minh họa để bàn giao.
+
+Đóng gói trực tiếp từ prediction đã có:
+
+```bash
+python scripts/package_submission.py --predictions results/test_predictions/predictions --test-images ../PhenoBench-v110/PhenoBench/test/images --output cloud_upload/submission_E2_segformer_ce.zip
+```
+
+Đăng ký và nộp theo liên kết Semantic segmentation of plants trên
+[PhenoBench Benchmarks](https://www.phenobench.org/benchmarks.html).
+Nhãn test được giữ kín; điểm chính thức chỉ có sau khi server chấm submission.
+Lưu submission ID và checkpoint SHA-256 để đối chiếu kết quả.
+
 ## Phân tích kết quả
 
 [result_analysis.ipynb](notebooks/result_analysis.ipynb) chạy trên CPU.

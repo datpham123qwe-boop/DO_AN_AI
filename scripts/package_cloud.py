@@ -19,7 +19,7 @@ def source_files():
                      and "__pycache__" not in p.parts)
     for relative in ("README.md", "requirements.txt", "requirements-cloud.txt", "pytest.ini",
                      "notebooks/train_cloud.ipynb", "notebooks/evaluate_cloud.ipynb",
-                     "notebooks/result_analysis.ipynb"):
+                     "notebooks/result_analysis.ipynb", "notebooks/predict_test.ipynb"):
         path = REPO / relative
         if path.is_file():
             files.append(path)
